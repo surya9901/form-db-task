@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB task</title>
+    <style>
+        #bt1:hover {
+            background-color: lightgrey;
+        }
+
+        #bt2:hover {
+            background-color: lightgrey;
+        }
+
+        #bt3:hover {
+            background-color: lightgrey;
+        }
+
+        #bt4:hover {
+            background-color: lightgrey;
+        }
+
+        #name:hover {
+            background-color: lightgrey;
+        }
+
+        #mailid:hover {
+            background-color: lightgrey;
+        }
+
+        #dob:hover {
+            background-color: lightgrey;
+        }
+
+        #phone:hover {
+            background-color: lightgrey;
+        }
+
+        tr:nth-child(even) {
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        //creating a div called container
+
+        var div = document.createElement("div")
+        document.body.appendChild(div)
+        div.setAttribute("class", "container")
+
+        // //styling the div container
+
+        div.style.padding = "5px"
+        div.style.display = "flex"
+        div.style.justifyContent = "space-between"
+        div.style.textAlign = "center"
+
+        //creating a div1 inside the container 
+
+        var div1 = document.createElement("div")
+        div.appendChild(div1)
+        div1.setAttribute("id", "box1")
+
+        //styling the div1
+        div1.style.backgroundColor = "lightgreen"
+        div1.style.border = "1px solid black"
+        div1.style.width = "40%"
+        div1.style.height = "100%"
+        div1.style.textAlign = "left";
+        div1.style.padding = "10px"
+
+        //creating a head 
+
+        var heading = document.createElement("h2")
+        heading.innerHTML = "FORM"
+        div1.appendChild(heading)
+
+        //styling the head
+
+        heading.style.textAlign = "center"
+        heading.style.marginTop = "0px"
+
+
+
+        //creating div for name
+
+        var userName = document.createElement("div")
+        userName.innerHTML = ("Name : ")
+        div1.appendChild(userName)
+
+        //styling
+
+        userName.style.marginTop = "10px"
+
+        //creating a input box
+
+        var userName_Input = document.createElement("input")
+        userName_Input.setAttribute("type", "userName")
+        userName_Input.setAttribute("id", "name")
+        userName_Input.setAttribute("placeholder", "Enter your Name...")
+        userName.appendChild(userName_Input)
+
+
+        //styling user name input
+
+        userName_Input.style.padding = "5px"
+        userName_Input.style.border = "1px solid black"
+        userName_Input.style.borderRadius = "5px"
+
+        //creating div for dob
+
+        var dob = document.createElement("div")
+        dob.innerHTML = ("D.O.B : ")
+        div1.appendChild(dob)
+
+        //styling
+
+        dob.style.marginTop = "10px"
+
+        var dob_Input = document.createElement("input")
+        dob_Input.setAttribute("type", "date")
+        dob_Input.setAttribute("id", "dob")
+        dob.appendChild(dob_Input)
+
+        //styling dob input
+
+        dob_Input.style.padding = "3px"
+        dob_Input.style.border = "1px solid black"
+        dob_Input.style.borderRadius = "5px"
+
+        //creating div for phone number
+
+        var phonenumber = document.createElement("div")
+        phonenumber.innerHTML = ("Phone Number : ")
+        div1.appendChild(phonenumber)
+
+        //styling
+
+        phonenumber.style.marginTop = "10px"
+
+        var phno_Input = document.createElement("input")
+        phno_Input.setAttribute("type", "tel")
+        phno_Input.setAttribute("id", "phone")
+        phno_Input.setAttribute("placeholder", "Enter your Phone number")
+        phonenumber.appendChild(phno_Input)
+
+        //styling phone number input
+
+        phno_Input.style.padding = "5px"
+        phno_Input.style.border = "1px solid black"
+        phno_Input.style.borderRadius = "5px"
+
+        //creating div for Email id
+
+        var email = document.createElement("div")
+        email.innerHTML = ("Email id : ")
+        div1.appendChild(email)
+
+        //styling
+
+        email.style.marginTop = "10px"
+
+        var email_Input = document.createElement("input")
+        email_Input.setAttribute("type", "email")
+        email_Input.setAttribute("id", "mailid")
+        email_Input.setAttribute("placeholder", "Enter your mail id")
+        email.appendChild(email_Input)
+
+        //styling email input
+
+        email_Input.style.padding = "5px"
+        email_Input.style.border = "1px solid black"
+        email_Input.style.borderRadius = "5px"
+
+        //creating a submit button
+
+        var submit = document.createElement("button")
+        submit.innerText = ("SUBMIT")
+        submit.setAttribute("type", "submit")
+        submit.setAttribute("id", "bt1")
+        submit.setAttribute("onclick", "addinfo()")
+        div1.appendChild(submit)
+
+        //styling
+
+        submit.style.marginTop = "10px"
+        submit.style.borderRadius = "5px"
+        submit.style.border = "1px solid black"
+        submit.style.padding = "5px"
+        submit.style.cursor = "pointer"
+
+        //creating a save button
+
+        var save = document.createElement("button")
+        save.innerText = ("SAVE")
+        save.setAttribute("type", "button")
+        save.setAttribute("id", "bt2")
+        save.setAttribute("class", "update")
+        save.setAttribute("onclick", "saveinfo(val)")
+        div1.appendChild(save)
+
+
+        //styling
+
+        save.style.marginTop = "10px"
+        save.style.marginLeft = "15px"
+        save.style.borderRadius = "5px"
+        save.style.border = "1px solid black"
+        save.style.padding = "5px"
+        save.style.cursor = "pointer"
+        // save.setAttribute("disabled", "true")
+
+
+
+
+
+        //creating a div2 inside the container 
+
+        var div2 = document.createElement("div")
+        div.appendChild(div2)
+        div2.setAttribute("id", "box2")
+
+        // <div id = "box2"></div>
+
+        //styling
+        div2.style.border = "1px solid black"
+        div2.style.width = "57%"
+        div2.style.height = "100%"
+
+        viewinfo()
+
+        async function viewinfo() {
+
+            try {
+                document.getElementById("box2").innerHTML = ""
+                var wapi = await fetch("https://60ebd2e9e9647b0017cdde3c.mockapi.io/tasl/1/users")
+                newdata = await wapi.json()
+
+                var table = document.createElement("TABLE")
+                table.style.padding = "2px"
+                div2.appendChild(table)
+
+                var tr = document.createElement("TR")
+                table.appendChild(tr)
+
+                var th = document.createElement("TH")
+                th.innerText = "NAME"
+                th.style.textAlign = "center"
+                th.style.borderRadius = "5px"
+                th.style.padding = "10px"
+                tr.appendChild(th)
+
+                var th = document.createElement("TH")
+                th.innerText = "D.O.B"
+                th.style.textAlign = "center"
+                th.style.borderRadius = "5px"
+                th.style.padding = "10px"
+                tr.appendChild(th)
+
+                var th = document.createElement("TH")
+                th.innerText = "PHONE NUMBER"
+                th.style.textAlign = "ceter"
+                th.style.borderRadius = "5px"
+                th.style.padding = "10px"
+                tr.appendChild(th)
+
+                var th = document.createElement("TH")
+                th.innerText = "EMAIL ID"
+                th.style.textAlign = "center"
+                th.style.borderRadius = "5px"
+                th.style.padding = "10px"
+                tr.appendChild(th)
+
+                var th = document.createElement("TH")
+                th.innerText = ""
+                tr.appendChild(th)
+
+                for (let i = 0; i < newdata.length; i++) {
+                    const element = newdata[i];
+
+                    var y = document.createElement("TR");
+                    y.style.border = "1px solid black"
+                    table.appendChild(y);
+
+                    var z = document.createElement("TD");
+                    var t = document.createTextNode(element.name)
+                    z.style.padding = "3px"
+                    z.style.borderRadius = "5px"
+                    z.appendChild(t)
+                    y.appendChild(z)
+
+                    var z = document.createElement("TD");
+                    var t = document.createTextNode(element.dob)
+                    z.style.borderRadius = "5px"
+                    z.style.padding = "3px"
+                    z.appendChild(t)
+                    y.appendChild(z)
+
+                    var z = document.createElement("TD");
+                    var t = document.createTextNode(element.phonenumber)
+                    z.style.borderRadius = "5px"
+                    z.style.padding = "3px"
+                    z.appendChild(t)
+                    y.appendChild(z)
+
+                    var z = document.createElement("TD");
+                    var t = document.createTextNode(element.email)
+                    z.style.borderRadius = "5px"
+                    z.style.padding = "3px"
+                    z.appendChild(t)
+                    y.appendChild(z)
+
+                    var z = document.createElement("TD");
+                    var t = document.createElement("button")
+                    t.innerText = "DELETE"
+                    t.setAttribute("id", "bt3")
+                    t.style.border = "1px solid black"
+                    t.style.borderRadius = "5px"
+                    t.style.padding = "5px"
+                    z.style.padding = "3px"
+                    z.style.backgroundColor = "white"
+                    t.setAttribute("onclick", "removeinfo(" + element.id + ")")
+                    z.appendChild(t)
+                    y.appendChild(z)
+
+                    var z = document.createElement("TD");
+                    var t = document.createElement("button")
+                    t.innerText = "EDIT"
+                    t.setAttribute("id", "bt4")
+                    t.style.border = "1px solid black"
+                    t.style.borderRadius = "5px"
+                    t.style.padding = "5px"
+                    z.style.padding = "3px"
+                    z.style.backgroundColor = "white"
+                    t.setAttribute("onclick", "editinfo(" + element.id + ")")
+                    z.appendChild(t)
+                    y.appendChild(z)
+
+                }
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+
+        //function to add data
+
+        async function addinfo() {
+            data = {}
+            data.name = document.getElementById("name").value 
+            data.dob = document.getElementById("dob").value
+            data.phonenumber = document.getElementById("phone").value
+            data.email = document.getElementById("mailid").value
+
+            var ad = await fetch("https://60ebd2e9e9647b0017cdde3c.mockapi.io/tasl/1/users", {
+
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+            alert("submitted")
+            viewinfo();
+        }
+
+        //function to delete data
+
+        async function removeinfo(id) {
+            alert("Confirm to delete")
+            var ad = await fetch("https://60ebd2e9e9647b0017cdde3c.mockapi.io/tasl/1/users/" + id, {
+                method: "DELETE"
+            })
+            viewinfo();
+            alert("Deleted")
+        }
+
+        //function for edit button to retreive data 
+
+        var val;
+
+        async function editinfo(id) {
+            alert("Confirm to edit")
+            var ad = await fetch("https://60ebd2e9e9647b0017cdde3c.mockapi.io/tasl/1/users/" + id)
+            data = await ad.json()
+            document.getElementById("name").value = data.name
+            document.getElementById("dob").value = data.dob
+            document.getElementById("phone").value = data.phonenumber
+            document.getElementById("mailid").value = data.email
+            val = data.id
+        }
+
+
+        //function for save button to update & store data in the db
+
+        async function saveinfo(val) {
+            data = {}
+            data.name = document.getElementById("name").value
+            data.dob = document.getElementById("dob").value
+            data.email = document.getElementById("mailid").value
+            data.phonenumber = document.getElementById("phone").value
+            var ud = await fetch("https://60ebd2e9e9647b0017cdde3c.mockapi.io/tasl/1/users/" + val, {
+                method: "PUT",
+                body: JSON.stringify(data),
+                headers: {
+                    "content-type": "application/json"
+                }
+            })
+
+            alert("saved")
+            viewinfo();
+        }
+
+
+    </script>
+
+</body>
+
+</html>
